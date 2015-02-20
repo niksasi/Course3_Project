@@ -16,7 +16,7 @@ Full_subject <- rbind(subject_train, subject_test)
 Full_y <- rbind(y_train, y_test)
 Final_RAW_2 <- cbind(Full_y, Full_subject, Final_RAW_1) 
 names(Final_RAW_2) <- c("Activity", "Subject", features[,2])
-FINAL <- Final_RAW_2[1:10299,1:563] ## weird thing, R gets stuck if i dont do this redefining the same df as another variable 
+FINAL <- Final_RAW_2[1:10299,1:563] ## weird thing, on my computer R gets stuck, if I dont do this step to redefine the df
 DF_MeanSD <- cbind(FINAL[,1:2],select(FINAL, contains("mean")),select(FINAL, contains("std")))
 DF_MeanSD[,1] <- factor(DF_MeanSD[,1], labels = activitylabels[,2])
 df2 <- group_by(DF_MeanSD, Subject, Activity)
